@@ -20,6 +20,14 @@ A terminal-based tool to properly format USB drives and copy Juniper installatio
 
 ## Installation
 
+### Quick Install (One Command)
+
+```bash
+cd ~ && git clone https://github.com/jfox91/juniper-usb-wizard.git && cd juniper-usb-wizard && ./setup.sh
+```
+
+### Step-by-Step Install
+
 1. Clone or download this repository:
    ```bash
    cd ~
@@ -32,17 +40,22 @@ A terminal-based tool to properly format USB drives and copy Juniper installatio
    cd juniper-usb-wizard
    ```
 
-3. Run the setup script (it will handle everything):
+3. Run the setup script (it will handle everything automatically):
    ```bash
    ./setup.sh
    ```
 
-   The setup script will:
-   - Check for Python 3 and pip
-   - Prompt to install dosfstools if needed
+   The setup script will automatically:
+   - Detect your Linux package manager (apt, dnf, yum, pacman)
+   - Install Python 3 if missing (prompts first)
+   - Install pip3 if missing
+   - Install python3-venv if missing
+   - Install dosfstools (mkfs.vfat) if missing (prompts first)
    - Create a virtual environment
    - Install all Python dependencies
    - Make scripts executable
+
+   **No manual dependency installation needed!** Just run `./setup.sh` and answer the prompts.
 
 ## Usage
 
@@ -85,17 +98,26 @@ cp ~/Downloads/jinstall-*.tgz juniper_files/
 
 ## Troubleshooting
 
+**"pip3 not installed" or "python3-venv not found"**
+- Simply run `./setup.sh` - it will automatically detect and offer to install missing dependencies
+- If the setup script doesn't work, manually install: `sudo apt-get install python3 python3-pip python3-venv dosfstools`
+
 **"No USB drives found"**
 - Ensure your USB drive is connected
 - Try running `lsblk` to see if the system detects it
+- Make sure the drive isn't your system drive (those are automatically excluded)
 
 **Permission errors**
 - The script requires sudo access. Run: `sudo -v` before starting
 - Ensure you're in the sudoers group
 
-**Format fails**
-- Make sure `dosfstools` is installed
-- Check that the drive isn't mounted elsewhere: `sudo umount /dev/sdX`
+**"Failed to format" or "device busy"**
+- The drive might be mounted. The wizard will try to unmount it automatically
+- If that fails, manually unmount: `sudo umount /dev/sdX*`
+- Make sure no file manager windows are open with the USB drive
+
+**Setup script fails on minimal systems**
+- Some minimal Linux installs don't have basic tools. Install: `sudo apt-get install git python3 python3-pip python3-venv dosfstools`
 
 ## How It Works
 
