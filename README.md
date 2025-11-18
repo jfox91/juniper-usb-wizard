@@ -3,6 +3,7 @@
 
 A terminal-based tool to properly format USB drives and copy Juniper installation files for use with Juniper switches.
 
+ORG drive folder: https://drive.google.com/drive/folders/1xY92SSt7yZ6oTairvMdBhCLAMrvVtSGm
 > **⚠️ LINUX ONLY**: This tool is designed for Linux systems and will not work on macOS or Windows. See [macOS/Windows Alternative](#macoswindows-alternative) below.
 
 ## Features!
