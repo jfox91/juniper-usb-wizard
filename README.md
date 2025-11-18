@@ -23,6 +23,20 @@ ORG drive folder: https://drive.google.com/drive/folders/1xY92SSt7yZ6oTairvMdBhC
 - `mkfs.vfat` utility (usually part of `dosfstools` package)
 
 ## Installation
+## Adding Juniper Files
+
+**Important:** This repository does not include Juniper installation files. You must provide your own.
+
+To add Juniper installation files:
+
+1. Download your Juniper installation `.tgz` files from Juniper Networks
+2. Place them in the `juniper_files/` directory
+3. The files will automatically appear in the selection menu when you run the wizard
+
+Example:
+```bash
+cp ~/Downloads/jinstall-*.tgz juniper_files/
+```
 
 ### Quick Install (One Command)
 
@@ -78,20 +92,6 @@ cd ~ && git clone https://github.com/jfox91/juniper-usb-wizard.git && cd juniper
 
 4. When done, safely remove the USB drive and use it with your Juniper switch
 
-## Adding Juniper Files
-
-**Important:** This repository does not include Juniper installation files. You must provide your own.
-
-To add Juniper installation files:
-
-1. Download your Juniper installation `.tgz` files from Juniper Networks
-2. Place them in the `juniper_files/` directory
-3. The files will automatically appear in the selection menu when you run the wizard
-
-Example:
-```bash
-cp ~/Downloads/jinstall-*.tgz juniper_files/
-```
 
 ## Safety Features
 
