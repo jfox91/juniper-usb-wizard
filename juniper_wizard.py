@@ -7,6 +7,7 @@ import os
 import sys
 import subprocess
 import shutil
+import platform
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -16,6 +17,25 @@ from textual.widgets import Header, Footer, Button, Static, Label, ListItem, Lis
 from textual.screen import Screen
 from textual import on
 from textual.binding import Binding
+
+
+# Check if running on Linux
+if platform.system() != 'Linux':
+    print("=" * 50)
+    print("ERROR: This tool only works on Linux")
+    print("=" * 50)
+    print(f"\nDetected OS: {platform.system()}")
+    print("\nThis tool uses Linux-specific commands like:")
+    print("  - lsblk (for drive detection)")
+    print("  - mkfs.vfat (for FAT32 formatting)")
+    print("  - mount/umount (for filesystem operations)")
+    print("\nThese are not available on macOS or Windows.")
+    print("\nFor macOS users:")
+    print("  - You can manually format your USB as FAT32 using Disk Utility")
+    print("  - Then copy the Juniper .tgz file to the USB drive")
+    print("\nFor more info: https://github.com/jfox91/juniper-usb-wizard")
+    print()
+    sys.exit(1)
 
 
 class DriveInfo:

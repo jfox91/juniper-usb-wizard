@@ -1,6 +1,9 @@
 # Juniper USB Wizard
 [jin-usb-wizard](https://github.com/user-attachments/assets/8e4dccc1-2903-4b43-b87a-3b0a1543ffd3)
+
 A terminal-based tool to properly format USB drives and copy Juniper installation files for use with Juniper switches.
+
+> **⚠️ LINUX ONLY**: This tool is designed for Linux systems and will not work on macOS or Windows. See [macOS/Windows Alternative](#macoswindows-alternative) below.
 
 ## Features!
 
@@ -133,6 +136,52 @@ cp ~/Downloads/jinstall-*.tgz juniper_files/
 ⚠️ **This tool will erase ALL data on the selected USB drive!** ⚠️
 
 Always double-check you've selected the correct drive before proceeding.
+
+## macOS/Windows Alternative
+
+This tool uses Linux-specific commands (`lsblk`, `mkfs.vfat`, etc.) and **will not work on macOS or Windows**.
+
+### For macOS Users
+
+You can manually prepare the USB drive:
+
+1. **Format the USB drive:**
+   - Open **Disk Utility** (Applications → Utilities → Disk Utility)
+   - Select your USB drive from the left sidebar
+   - Click **Erase**
+   - Set Format to: **MS-DOS (FAT32)**
+   - Set Scheme to: **Master Boot Record**
+   - Click **Erase**
+
+2. **Copy the Juniper file:**
+   ```bash
+   cp ~/Downloads/jinstall-*.tgz /Volumes/YOUR_USB_NAME/
+   ```
+
+3. **Eject the drive:**
+   - Right-click the USB in Finder and select **Eject**
+
+### For Windows Users
+
+You can manually prepare the USB drive:
+
+1. **Format the USB drive:**
+   - Right-click on the USB drive in File Explorer
+   - Select **Format**
+   - File system: **FAT32**
+   - Click **Start**
+
+2. **Copy the Juniper file:**
+   - Simply drag and drop the `.tgz` file to the USB drive
+
+3. **Safely eject:**
+   - Right-click the USB and select **Eject**
+
+### Important Notes
+
+- The Juniper file must remain **compressed** (do not extract the .tgz file)
+- Use **FAT32** format only (not exFAT or NTFS)
+- The file should be in the root directory of the USB drive
 
 ## License
 
