@@ -1,8 +1,9 @@
 # Juniper USB Wizard
-
+[jin-usb-wizard](https://github.com/user-attachments/assets/8e4dccc1-2903-4b43-b87a-3b0a1543ffd3)
 A terminal-based tool to properly format USB drives and copy Juniper installation files for use with Juniper switches.
 
-## Features
+## Features!
+
 
 - **Interactive TUI** - Easy-to-use terminal interface
 - **Safety checks** - Warns when selecting drives larger than 10GB
